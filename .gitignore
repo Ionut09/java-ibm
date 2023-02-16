@@ -1,0 +1,21 @@
+# IntelliJ
+*iml
+*ipr
+*iws
+*eml
+.idea/
+
+# Eclipse
+.classpath
+.project
+.externalToolBuilders
+.settings
+
+# Maven
+target
+
+# Gradle
+build
+.gradle
+
+src/main/resources/application-ionut.properties
