@@ -1,5 +1,7 @@
 package com.ibm.java._1_operators;
 
+import java.util.Scanner;
+
 public class Operators { //fara public e vizibila doar in pachetul unde e definita
 	
 	public static void main(String[] args) {
@@ -77,8 +79,15 @@ public class Operators { //fara public e vizibila doar in pachetul unde e defini
 		char unicodeChar = '\u007F'; //code in baza 16
 		System.out.println("unicodeChar = " + unicodeChar);
 		
+		String name = null;
+		functionWithPotentialNUllParameter(name);
 		
-		
+	}
+	
+	private static void functionWithPotentialNUllParameter(String name) {
+		if (name != null && name.startsWith("A")) { //daca name e null ==> name.startsWith("A") nu se executa
+			System.out.println("This name starts with A");
+		}
 	}
 	
 }
