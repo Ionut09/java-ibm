@@ -19,9 +19,36 @@ public class Car {
 		this.color = color;
 	}
 	
+	public void accelerate(float acceleration) {
+		System.out.println("Accelerate from Car");
+		if (speed + acceleration > maxSpeed) {
+			speed = maxSpeed;
+		} else {
+			speed += acceleration;
+		}
+	}
+	
+	public void changeGear(byte gearsChanged) {
+		System.out.println("Change gear from Car");
+		if (gear + gearsChanged < 1) {
+			gear = 1;
+		} else if (gear + gearsChanged > 5) {
+			gear = 5;
+		} else {
+			gear += gearsChanged;
+		}
+	}
+	
+	public void setGear(byte gear) {
+		this.gear = gear;
+	}
 	
 	public float getSpeed() {
 		return speed;
+	}
+	
+	protected void setSpeed(float speed) {
+		this.speed = speed;
 	}
 	
 	public float getFuelLevel() {
