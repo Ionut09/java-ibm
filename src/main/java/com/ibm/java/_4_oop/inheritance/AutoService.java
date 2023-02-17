@@ -24,5 +24,6 @@ public class AutoService {
 		simpleCar.changeGear((byte) 4);
 		System.out.println("simpleCar.getGear() = " + simpleCar.getGear());
 		
+
 	}
 }

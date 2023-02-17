@@ -1,5 +1,15 @@
 package com.ibm.java._4_oop.inheritance;
 
+/*
+   Definiti o metoda in Car pe care sa o suprascriem in Autombile si intr-o alta clasa Truck
+   
+   getMaxLoad();
+   
+    Test code:
+	Car myCar = new Automobile();
+	myCar = new Truck();
+	myCar.getMaxLoad();
+ */
 public class Car {
 	
 	public static final boolean HAS_DOORS = true;
@@ -38,6 +48,9 @@ public class Car {
 			gear += gearsChanged;
 		}
 	}
+	
+	
+	
 	
 	public void setGear(byte gear) {
 		this.gear = gear;
