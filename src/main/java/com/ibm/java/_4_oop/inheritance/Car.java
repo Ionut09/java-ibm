@@ -1,9 +1,9 @@
 package com.ibm.java._4_oop.inheritance;
 
 /*
-   Definiti o metoda in Car pe care sa o suprascriem in Autombile si intr-o alta clasa Truck
+    Definiti o metoda in Car pe care sa o suprascriem in Autombile si intr-o alta clasa Truck
    
-   getMaxLoad();
+    getMaxLoad();
    
     Test code:
 	Car myCar = new Automobile();
@@ -49,7 +49,10 @@ public class Car {
 		}
 	}
 	
-	
+	public int getMaxLoad(){
+		System.out.println("Get load from Car");
+		return 1000;
+	}
 	
 	
 	public void setGear(byte gear) {

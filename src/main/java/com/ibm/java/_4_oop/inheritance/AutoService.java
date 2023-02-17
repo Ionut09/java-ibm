@@ -1,6 +1,5 @@
 package com.ibm.java._4_oop.inheritance;
 
-
 public class AutoService {
 	
 	public static void main(String[] args) {
@@ -24,6 +23,22 @@ public class AutoService {
 		simpleCar.changeGear((byte) 4);
 		System.out.println("simpleCar.getGear() = " + simpleCar.getGear());
 		
-
+		System.out.println();
+		Car myCar = new Car((byte) 3, 50, new Color("white"));
+		System.out.println("myCar.getMaxLoad() = " + myCar.getMaxLoad());
+		
+		myCar = new Automobile("Dacia", "logan", (byte) 2, 20, new Color("red"));
+		System.out.println("myCar.getMaxLoad() = " + myCar.getMaxLoad());
+		
+		myCar = new Truck((byte) 12, 50, new Color("white"));
+		System.out.println("myCar.getMaxLoad() = " + myCar.getMaxLoad());
+		
+		Car secondRef = myCar;
+		System.out.println("myCar.getGear() = " + myCar.getGear());
+		secondRef.changeGear((byte) 3);
+		System.out.println("myCar.getGear() = " + myCar.getGear());
+		System.out.println("secodnRef.getGear() = " + secondRef.getGear());
+		
+		
 	}
 }

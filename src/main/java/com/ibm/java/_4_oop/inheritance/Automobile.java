@@ -53,6 +53,12 @@ public class Automobile extends Car {
 		}
 	}
 	
+	public int getMaxLoad(){
+		System.out.println("Get load from Automobile");
+		return 3500;
+	}
+	
+	
 	public void setMake(String make) {
 		this.make = make;
 	}
