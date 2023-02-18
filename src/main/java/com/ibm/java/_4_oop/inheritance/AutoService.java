@@ -39,6 +39,6 @@ public class AutoService {
 		System.out.println("myCar.getGear() = " + myCar.getGear());
 		System.out.println("secodnRef.getGear() = " + secondRef.getGear());
 		
-		
+		System.out.println("Vehicle.HAS_DRIVER = " + Vehicle.HAS_DRIVER);
 	}
 }

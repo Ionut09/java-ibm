@@ -15,6 +15,10 @@ public class Automobile extends Car {
 		return make;
 	}
 	
+	public void setMake(String make) {
+		this.make = make;
+	}
+	
 	public String getModel() {
 		return model;
 	}
@@ -27,6 +31,15 @@ public class Automobile extends Car {
 	//		}
 	//		//		this.speed += acceleration;
 	//	}
+	
+	public void setModel(String model) {
+		this.model = model;
+	}
+	
+	@Override
+	public void moves() {
+		System.out.println("Automobile moves");
+	}
 	
 	public void accelerate() { //overloading
 		System.out.println("Accelerate");
@@ -41,7 +54,6 @@ public class Automobile extends Car {
 		}
 	}
 	
-	
 	public void changeGear(byte gearsChanged) {
 		System.out.println("Change gear from Automobile");
 		if (getGear() + gearsChanged < 1) {
@@ -53,17 +65,8 @@ public class Automobile extends Car {
 		}
 	}
 	
-	public int getMaxLoad(){
+	public int getMaxLoad() {
 		System.out.println("Get load from Automobile");
 		return 3500;
-	}
-	
-	
-	public void setMake(String make) {
-		this.make = make;
-	}
-	
-	public void setModel(String model) {
-		this.model = model;
 	}
 }

@@ -32,7 +32,8 @@ public class Book {
 		boolean isArgInstanceOfBook = o instanceof Book;
 		if (isArgInstanceOfBook) {
 			String title = ((Book) o).getTitle();
-			return this.title.equals(title);
+			String author = ((Book) o).getAuthor();
+			return this.title.equals(title) && this.author.equals(author);
 		}else{
 			return false;
 		}

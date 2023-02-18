@@ -13,14 +13,15 @@ import java.util.List;
   5. replace Books in library (with a new one)
   
  */
-public class BookLibraryManagement extends Object {
+public class BookManagerWithList implements BookLibraryManager {
 	
 	//de instanta (ne-statice) au nevoie de un obiect ca sa existe, doar cu un obiect se pot apela
 	//statice ->  nu au nevoie de un obiect ca sa existe
-	List<Book> books = new ArrayList<>(100); //<> diamond operator
+	List<Book> books = new ArrayList<>(); //<> diamond operator
 	
 	public static void main(String[] args) {
-		BookLibraryManagement manager = new BookLibraryManagement();
+		BookLibraryManager manager = new BookManagerWithList();
+		//		books.stream()
 /*
 		System.out.println(manager.books.size());
 		BookLibraryManagement manager2 = new BookLibraryManagement();
@@ -46,51 +47,26 @@ public class BookLibraryManagement extends Object {
 		System.out.println("\"Java 11 in action\" is on raft: " + manager.searchBook("Java 11 in action"));
 		
 		manager.remove(new Book("Moby Dick", null, null));
-		System.out.println("after removal ==> " );
+		System.out.println("after removal ==> ");
 		manager.viewContent();
 		
 		manager.replaceOldBook(new Book("Java 8 in action", "7621234563682", "Mario Fusco"),
-			                   new Book("Java 11 in action", "2176287127618", "Mario Fusco"));
+			new Book("Java 11 in action", "2176287127618", "Mario Fusco"));
 		
-		System.out.println("after replace ==> " );
+		System.out.println("after replace ==> ");
 		manager.viewContent();
-//		books.
+		//		books.
 	}
 	
-	private void addBookToLibrary(Book book) {
-		books.add(book);
-	}
-	
-	private void viewContent() {
-		//		for (Book book : books) {
-		//			System.out.println(book);
-		//		}
-		//
-		for (int i = 0; i <= books.size() - 1; i++) {
-			System.out.println("Book nr. " + (i + 1) + " -> " + books.get(i));
-		}
-	}
-	
-	private int searchBook(String title) {
-		//		for (int i = 0; i <= books.size() - 1; i++) {
-		//			Book book = books.get(i);
-		//			if (book.getTitle().equals(title)) {
-		//				return i;
-		//			}
-		//		}
-		//		return -1;
-		boolean containsBookWithGivenTitle = books.contains(new Book(title, null, null));
-		int indexOfBook = books.indexOf(new Book(title, null, null));
-		return indexOfBook + 1;
-	}
-	
+	@Override
 	public void remove(Book book) {
 		//      int index = books.indexOf(book);
 		//		books.remove(index);//based on index -> remove Book from index 3
-//		books.remove(book);  //based on object
+		//		books.remove(book);  //based on object
 		books.removeIf(bookFromList -> bookFromList.equals(book));
 	}
 	
+	@Override
 	public void replaceOldBook(Book oldBook, Book newBook) {
 		
 		int indexOfOld = books.indexOf(oldBook); //get location of oldBook
@@ -104,5 +80,32 @@ public class BookLibraryManagement extends Object {
 		//			return book;
 		//		});
 		
+	}
+	
+	public void addBookToLibrary(Book book) {
+		books.add(book);
+	}
+	
+	public void viewContent() {
+		//		for (Book book : books) {
+		//			System.out.println(book);
+		//		}
+		//
+		for (int i = 0; i <= books.size() - 1; i++) {
+			System.out.println("Book nr. " + (i + 1) + " -> " + books.get(i));
+		}
+	}
+	
+	public int searchBook(String title) {
+		//		for (int i = 0; i <= books.size() - 1; i++) {
+		//			Book book = books.get(i);
+		//			if (book.getTitle().equals(title)) {
+		//				return i;
+		//			}
+		//		}
+		//		return -1;
+		boolean containsBookWithGivenTitle = books.contains(new Book(title, null, null));
+		int indexOfBook = books.indexOf(new Book(title, null, null));
+		return indexOfBook + 1;
 	}
 }

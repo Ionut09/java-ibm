@@ -11,6 +11,10 @@ public class Truck extends Car {
 //		return 40_000; //
 //	}
 	
+	public void moves(){
+		System.out.println("truck moves");
+	}
+	
 	public void changeGear(byte gearsChanged) {
 		System.out.println("Change gear from Truck");
 		if (getGear() + gearsChanged < 1) {
@@ -21,5 +25,4 @@ public class Truck extends Car {
 			setGear((byte) (getGear() + gearsChanged));
 		}
 	}
-	
 }

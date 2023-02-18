@@ -10,7 +10,7 @@ package com.ibm.java._4_oop.inheritance;
 	myCar = new Truck();
 	myCar.getMaxLoad();
  */
-public class Car {
+public class Car implements Vehicle {
 	
 	public static final boolean HAS_DOORS = true;
 	
@@ -27,6 +27,11 @@ public class Car {
 		this.gear = gear;
 		this.speed = speed;
 		this.color = color;
+	}
+	
+	@Override
+	public void moves() {
+	
 	}
 	
 	public void accelerate(float acceleration) {
@@ -49,14 +54,9 @@ public class Car {
 		}
 	}
 	
-	public int getMaxLoad(){
+	public int getMaxLoad() {
 		System.out.println("Get load from Car");
 		return 1000;
-	}
-	
-	
-	public void setGear(byte gear) {
-		this.gear = gear;
 	}
 	
 	public float getSpeed() {
@@ -73,6 +73,10 @@ public class Car {
 	
 	public byte getGear() {
 		return gear;
+	}
+	
+	public void setGear(byte gear) {
+		this.gear = gear;
 	}
 	
 	public Color getColor() {
