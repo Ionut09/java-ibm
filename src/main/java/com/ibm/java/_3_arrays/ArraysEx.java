@@ -1,6 +1,7 @@
 package com.ibm.java._3_arrays;
 
 import java.util.Arrays;
+import java.lang.*;
 
 public class ArraysEx {
 	
