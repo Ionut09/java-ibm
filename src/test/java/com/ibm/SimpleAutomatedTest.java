@@ -5,7 +5,10 @@ import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertTrue;
 
+import java.math.BigDecimal;
+import java.text.NumberFormat;
 import java.time.Duration;
+import java.util.Locale;
 import java.util.NoSuchElementException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -70,38 +73,66 @@ public class SimpleAutomatedTest {
 		assertEquals(result, inputValue);
 	}
 	
-	private void sleep(int millis) {
+	@Test
+	public void testMonthlyPayment() {
+		//given
+		driver.navigate()
+		      .to("https://www.calculator.net/mortgage-payoff-calculator.html");
+		driver.manage()
+		      .window()
+		      .maximize();
+		
+		// Enter value 100000 in the first number of the percent Calculator
+		WebElement element = driver.findElement(By.name("cloanamount")); ////amount
+		element.clear();
+		element.sendKeys("50000");
+		sleep(500);
+		
+		element = driver.findElement(By.name("cloanterm")); //period
+		element.clear();
+		element.sendKeys("20");
+		sleep(500);
+		
+		element = driver.findElement(By.name("cinterestrate")); //interest rate
+		element.clear();
+		element.sendKeys("7.5");
+		sleep(500);
+		
+		element = driver.findElement(By.name("cremainingyear"));
+		element.clear();
+		element.sendKeys("20");
+		sleep(500);
+		
+		element = driver.findElement(By.name("cremainingmonth"));
+		element.clear();
+		element.sendKeys("0");
+		
+		driver.findElement(By.xpath("//*[@id=\"calinputtable\"]/tbody/tr[5]/td/label[4]/span"))
+		      .click();
+		
+		//when
+		driver.findElement(By.xpath("//*[@id=\"calinputtable\"]/tbody/tr[6]/td/input[2]"))
+		      .click();
+		
+		//then
+		element = driver.findElement(By.xpath("//*[@id=\"content\"]/div[3]/table/tbody/tr[1]/td[2]"));
+		System.out.println(element.getTagName());
+		
+		BigDecimal money = new BigDecimal(402.80);
+		NumberFormat formatter = NumberFormat.getCurrencyInstance(Locale.US);
+		String expectedFormattedAmount = formatter.format(money); //this formats the amount to $402.80
+		assertEquals(element.getText(), expectedFormattedAmount);
+	}
+	
+	private void sleep(int milliseconds) {
 		try {
-			Thread.sleep(millis);
+			Thread.sleep(milliseconds);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
 	}
 	
 	@Test
-	public void testMonthlyPayLogic() {
-		//Given
-		driver.navigate()
-		      .to("http://www.calculator.net/mortgage-calculator.html");
-		driver.manage()
-		      .window()
-		      .maximize();
-		//When
-		By checkBoxXpath = By.xpath("//*[@id=\"content\"]/table[1]/tbody/tr/td[1]/table/tbody/tr[6]/td/label/span");
-		WebElement checkBox = driver.findElement(checkBoxXpath);
-		sleep(2000);
-		checkBox.click();
-		sleep(2000);
-		checkBox.click();
-		
-		assertTrue(driver.findElement(checkBoxXpath)
-		                 .isSelected());
-		assertTrue(checkBox.isEnabled());
-		assertTrue(checkBox.isDisplayed());
-		
-	}
-	
-	@Test 
 	public void checkBox() {
 		//Given
 		driver.navigate()
@@ -121,7 +152,7 @@ public class SimpleAutomatedTest {
 		checkBox.click();
 		
 		assertFalse(driver.findElement(checkBoxXpath)
-		                 .isSelected());
+		                  .isSelected());
 		assertTrue(checkBox.isEnabled());
 		assertTrue(checkBox.isDisplayed());
 	}
