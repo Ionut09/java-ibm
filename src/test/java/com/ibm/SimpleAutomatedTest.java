@@ -33,7 +33,7 @@ public class SimpleAutomatedTest {
 		System.setProperty("webdriver.chrome.driver",
 			"/Users/ionut/workspace/trainings/java-ibm/src/test/resources/chromedriver");
 		
-		options = new ChromeOptions()//.addArguments("--headless") //--> folosing arg. --headless nu va mai porni interfata Chrome, ci va rula in background
+		options = new ChromeOptions()//.addArguments("--headless") //--> folosing arg. --headless nu va mai porni interfata Chrome, ci o va rula in background
 		                             .addArguments("--no-sandbox");
 		driver = new ChromeDriver(options);
 		
